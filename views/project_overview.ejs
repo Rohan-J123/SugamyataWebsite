@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <link rel='stylesheet' type='text/css' href='./css_files/project_overview_css.css'>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugamyata Project - Accessibility Awareness</title>
+</head>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+<body>
+    <div class="hamburger-menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#overview">Project Overview</a></li>
+                <li><a href="#impact">Project Impact</a></li>
+                <li><a href="#involved">Get Involved</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <header id="home">
+            <h1>Sugamyata Project <br> Accessibility Awareness</h1>
+        </header>
+        <main>
+            <section id="overview" class="overview">
+                <h2>Project Overview</h2>
+                <p>The Sugamyata Project aims to raise awareness about accessibility in technology through interactive and educational games. Our mission is to create a more inclusive digital world by educating developers and users about the importance of accessible design.</p>
+            </section>
+            <div id="impact" class="content-box">
+                <h2>Project Impact</h2>
+                <p>The Sugamyata Project addresses the critical need for accessibility education in the tech industry. By providing interactive learning experiences, we aim to:</p>
+                <ul>
+                    <li>Increase awareness of accessibility issues</li>
+                    <li>Improve the skills of developers in creating accessible products</li>
+                    <li>Foster a more inclusive digital environment for all users</li>
+                </ul>
+            </div>
+            <div class="button-container">
+                <a href="/buckets" class="button">Educational Games</a>
+            </div>
+            <div id="involved" class="content-box">
+                <h2>Get Involved</h2>
+                <p>Join our mission to make technology accessible for everyone. We welcome contributions from individuals and organizations who share our vision of an inclusive digital world.</p>
+                <p>Here's how you can participate:</p>
+                <ul>
+                    <li>Contribute to our open-source educational games</li>
+                    <li>Spread awareness about digital accessibility in your network</li>
+                    <li>Partner with us for accessibility training in your organization</li>
+                </ul>
+                <p><a href="#" style="color: #03256C; font-weight: bold;">Contact us</a> to learn more about collaboration opportunities and how you can make a difference.</p>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Sugamyata Project. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
+    </div>
+    <script>
+        // Check for saved theme preference or default to dark theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+    
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    
+        function updateThemeIcon(theme) {
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+    </script>
+</body>
+</html>

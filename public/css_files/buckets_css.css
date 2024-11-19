@@ -1,0 +1,498 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n1iIq129k.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+:root {
+    /* Dark mode colors (default) */
+    --bg-primary: #2c3e50;
+    --bg-secondary: #f4f4f4;
+    --bg-bucket: #1a2634;
+    --bg-game: #233446;
+    --text-primary: #ffffff;
+    --text-secondary: #ecf0f1;
+    --text-dark: #333;
+    --accent-primary: #2541B2;
+    --accent-secondary: #3498db;
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --border-color: #3498db;
+    --shadow-color: rgba(0, 0, 0, 0.2);
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --form-bg: #1a2634;
+    --input-bg: #233446;
+    --input-border: #3498db;
+}
+
+/* Light mode colors */
+[data-theme="light"] {
+    --bg-primary: #f4f4f4;
+    --bg-secondary: #ffffff;
+    --bg-bucket: #ffffff;
+    --bg-game: #f9f9f9;
+    --text-primary: #2c3e50;
+    --text-secondary: #333;
+    --text-dark: #333;
+    --accent-primary: #2541B2;
+    --accent-secondary: #3498db;
+    --button-bg: #3498db;
+    --button-hover: #2980b9;
+    --border-color: #3498db;
+    --shadow-color: rgba(0, 0, 0, 0.1);
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --form-bg: #ffffff;
+    --input-bg: #ffffff;
+    --input-border: #ddd;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    line-height: 1.6;
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin: 0;
+    padding: 0;
+    background-color: var(--bg-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent-primary);
+}   
+
+h1 { font-size: 2.5em; color: var(--text-primary); }
+h2 { font-size: 2.2em; color: var(--text-primary); }
+h3 { font-size: 1.9em; }
+
+.container {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+header {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+.buckets-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.bucket {
+    flex: 1;
+    background-color: var(--bg-bucket);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-bottom: -10px;
+    padding: 20px;
+    transition: transform 0.3s ease;
+}
+
+.bucket:hover {
+    transform: translateY(-5px);
+}
+
+.bucket h3 {
+    color: var(--accent-primary);
+    border-bottom: 2px solid var(--accent-secondary);
+    padding-bottom: 10px;
+}
+
+.bucket-content {
+    margin-top: 15px;
+}
+
+.game {
+    background-color: var(--bg-game);
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 10px;
+    color: var(--text-secondary);
+}
+
+.game h4 {
+    margin: 0 0 5px 0;
+    color: var(--accent-secondary);
+}
+
+.game p {
+    margin: 0;
+    font-size: 0.9em;
+}
+
+.play-button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.play-button:hover {
+    background-color: var(--button-hover);
+}
+
+.back-to-home-button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    padding: 5px 10px;
+    border-radius: 3px;
+    text-decoration: none;
+    margin-top: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-home-button:hover {
+    background-color: var(--button-hover);
+}
+
+.button-container {
+    text-align: right;
+    margin: 40px 0;
+}
+
+footer {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    bottom: 0;
+    text-align: center;
+    padding: 0;
+    margin-top: 2rem;
+}
+
+footer a {
+    color: var(--accent-secondary);
+    text-decoration: none;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+/* Sign-in/register form styles */
+.sign-in-register-container, .sign-up-register-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--overlay-bg);
+    z-index: 1000;
+}
+
+.sign-in-register-form, .sign-up-register-form{
+    background-color: var(--form-bg);
+    border-radius: 8px;
+    box-shadow: 0 4px 6px var(--shadow-color);
+    padding: 20px;
+    width: 100%;
+    max-width: 400px;
+}
+
+.sign-in-register-form h2, .sign-up-register-form h2 {
+    color: var(--accent-primary);
+    border-bottom: 2px solid var(--accent-secondary);
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.sign-in-register-form input, .sign-up-register-form input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--input-border);
+    border-radius: 4px;
+    box-sizing: border-box;
+    background-color: var(--input-bg);
+    color: var(--text-secondary);
+}
+
+.sign-in-register-form button, .sign-up-register-form button {
+    width: 100%;
+    padding: 10px;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.sign-in-register-form button:hover, .sign-up-register-form button:hover {
+    background-color: var(--button-hover);
+}
+
+.toggle-form {
+    text-align: center;
+    margin-top: 10px;
+    color: var(--text-secondary);
+}
+
+.toggle-form span {
+    color: var(--accent-secondary);
+    cursor: pointer;
+}
+
+.toggle-form span:hover {
+    text-decoration: underline;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-hover);
+}
+
+/* Smooth theme transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+
+.spinner-grow,
+.spinner-border {
+  display: inline-block;
+  width: var(--bs-spinner-width);
+  height: var(--bs-spinner-height);
+  vertical-align: var(--bs-spinner-vertical-align);
+  border-radius: 50%;
+  animation: var(--bs-spinner-animation-speed) linear infinite var(--bs-spinner-animation-name);
+}
+
+@keyframes spinner-border {
+  to {
+    transform: rotate(360deg) /* rtl:ignore */;
+  }
+}
+.spinner-border {
+  --bs-spinner-width: 2rem;
+  --bs-spinner-height: 2rem;
+  --bs-spinner-vertical-align: -0.125em;
+  --bs-spinner-border-width: 0.25em;
+  --bs-spinner-animation-speed: 0.75s;
+  --bs-spinner-animation-name: spinner-border;
+  border: var(--bs-spinner-border-width) solid currentcolor;
+  border-right-color: transparent;
+}
+
+.spinner-border-sm {
+  --bs-spinner-width: 1rem;
+  --bs-spinner-height: 1rem;
+  --bs-spinner-border-width: 0.2em;
+}
+
+@keyframes spinner-grow {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    opacity: 1;
+    transform: none;
+  }
+}
+.spinner-grow {
+  --bs-spinner-width: 2rem;
+  --bs-spinner-height: 2rem;
+  --bs-spinner-vertical-align: -0.125em;
+  --bs-spinner-animation-speed: 0.75s;
+  --bs-spinner-animation-name: spinner-grow;
+  background-color: currentcolor;
+  opacity: 0;
+}
+
+.spinner-grow-sm {
+  --bs-spinner-width: 1rem;
+  --bs-spinner-height: 1rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spinner-border,
+  .spinner-grow {
+    --bs-spinner-animation-speed: 1.5s;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
+
+.days-one-regular {
+    font-family: "Days One", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.protest-guerrilla-regular {
+    font-family: "Protest Guerrilla", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.wallpoet-regular {
+    font-family: "Wallpoet", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+  
+.lobster-regular {
+    font-family: "Lobster", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cursive-regular {
+    font-family: cursive;
+    font-weight: 400;
+    font-style: italic;
+}
+
+/*
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        @font-face {
+            font-family: 'IBM Plex Mono';
+            font-style: normal;
+            font-weight: 400;
+            font-display: swap;
+            src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n1iIq129k.woff2) format('woff2');
+            unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+        }
+        body {
+            font-family: 'Roboto', sans-serif;
+            line-height: 1.6;
+            font-size: 20px;
+            color: #333;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'IBM Plex Mono', monospace;
+            color: #2541B2;
+        }   
+        h1 { font-size: 2.5em; color: #ffffff; }
+        h2 { font-size: 2.2em; color: #ffffff; }
+        h3 { font-size: 1.9em; }
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+        }
+        header {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        h1, h2 {
+            margin: 0;
+        }
+        .buckets-container {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 2rem;
+        }
+        .bucket {
+            flex: 1;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-left: 15px;
+            margin-right: 15px;
+            margin-bottom: -10px;
+            padding: 20px;
+            transition: transform 0.3s ease;
+        }
+        .bucket:hover {
+            transform: translateY(-5px);
+        }
+        .bucket h3 {
+            color: #2541B2;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 10px;
+        }
+        .bucket-content {
+            margin-top: 15px;
+        }
+        .game {
+            background-color: #f9f9f9;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        .game h4 {
+            margin: 0 0 5px 0;
+            color: #2980b9;
+        }
+        .game p {
+            margin: 0;
+            font-size: 0.9em;
+        }
+        .play-button {
+            display: inline-block;
+            background-color: #3498db;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            text-decoration: none;
+            margin-top: 5px;
+            transition: background-color 0.3s ease;
+        }
+        .play-button:hover {
+            background-color: #2980b9;
+        }
+        .button-container {
+            text-align: right;
+            margin: 40px 0;
+        }
+        footer {
+            background-color: #2c3e50;
+            color: #ecf0f1;
+            bottom: 0;
+            text-align: center;
+            padding: 0;
+            margin-top: 2rem;
+        }
+        footer a {
+            color: #3498db;
+            text-decoration: none;
+        }
+        footer a:hover {
+            text-decoration: underline;
+        }
+        /* New styles for sign-in/register form */
+/*

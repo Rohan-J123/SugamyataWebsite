@@ -1,0 +1,265 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+@font-face {
+    font-family: 'IBM Plex Mono';
+    font-style: normal;
+    font-weight: 400;
+    font-display: swap;
+    src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n1iIq129k.woff2) format('woff2');
+    unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
+}
+
+:root {
+    /* Dark mode colors (default) */
+    --bg-primary: #2c3e50;
+    --bg-secondary: #06BEE1;
+    --text-primary: #ffffff;
+    --text-secondary: #ffffff;  /* Changed from #333 to #ffffff for better visibility in dark mode */
+    --text-content: #f0f0f0;    /* New variable for content text */
+    --accent-primary: #2541B2;
+    --accent-secondary: #03256C;
+    --hover-color: #06BEE1;
+    --button-bg: #2541B2;
+    --button-hover: #03256C;
+}
+
+/* Light mode colors */
+[data-theme="light"] {
+    --bg-primary: #ffffff;
+    --bg-secondary: #e1f5fe;
+    --text-primary: #2c3e50;
+    --text-secondary: #2c3e50;  /* Adjusted for better contrast in light mode */
+    --text-content: #333333;    /* Dark gray for content in light mode */
+    --accent-primary: #1976d2;
+    --accent-secondary: #1565c0;
+    --hover-color: #0288d1;
+    --button-bg: #1976d2;
+    --button-hover: #1565c0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    background-color: var(--bg-primary);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'IBM Plex Mono', monospace;
+    color: var(--accent-primary);
+}
+
+h1 { font-size: 2.5em; }
+h2 { font-size: 2.2em; }
+h3 { font-size: 1.9em; }
+
+/* Hamburger Menu Styles */
+.hamburger-menu {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.hamburger-icon {
+    width: 35px;
+    height: 35px;
+    background-color: var(--bg-primary);
+    border-radius: 5px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.hamburger-icon span {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-primary);
+    display: block;
+    border-radius: 2px;
+}
+
+.nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -250px;
+    width: 200px;
+    background-color: var(--bg-primary);
+    padding: 20px;
+    border-radius: 0 10px 10px 0;
+    transition: left 0.3s ease;
+    z-index: 999;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+}
+
+.hamburger-menu:hover .nav-menu {
+    left: 0;
+}
+
+.nav-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.nav-menu li {
+    padding: 10px 0;
+    border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+}
+
+.nav-menu li:last-child {
+    border-bottom: none;
+}
+
+.nav-menu a {
+    color: var(--text-primary);
+    text-decoration: none;
+    font-size: 1.1em;
+    display: block;
+    transition: color 0.3s ease;
+}
+
+.nav-menu a:hover {
+    color: var(--hover-color);
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+header {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 1rem 0;
+}
+
+h1 {
+    color: var(--text-primary);
+}
+
+main {
+    padding: 40px 0;
+}
+
+.content-box {
+    background-color: var(--bg-secondary);
+    color: var(--text-content);  /* Using new text-content variable */
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 40px;
+    /* Add stronger text contrast for dark mode */
+    text-shadow: 0 0 1px rgba(0,0,0,0.1);
+    font-weight: 400;
+}
+
+/* Add specific styles for paragraphs within content-box */
+.content-box p {
+    color: var(--text-content);
+    line-height: 1.8;
+    margin-bottom: 1.2em;
+}
+
+/* Enhance text visibility in dark mode */
+@media (prefers-color-scheme: dark) {
+    .content-box {
+        text-shadow: 0 0 1px rgba(255,255,255,0.1);
+    }
+}
+
+.content-box::before {
+    content: '';
+    position: absolute;
+    top: -50px;
+    right: -50px;
+    width: 100px;
+    height: 100px;
+    background-color: rgba(128, 128, 128, 0.1);
+    border-radius: 50%;
+}
+
+.content-box h2, .content-box h3 {
+    color: var(--accent-secondary);
+    margin-top: 0;
+}
+
+.content-box ul {
+    padding-left: 20px;
+}
+
+.content-box li {
+    margin-bottom: 10px;
+}
+
+.button-container {
+    text-align: center;
+    margin: 40px 0;
+}
+
+.button {
+    display: inline-block;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    text-decoration: none;
+    padding: 15px 30px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-family: 'Roboto', sans-serif;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+}
+
+.button:hover {
+    background-color: var(--button-hover);
+}
+
+footer {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 50px;
+    font-size: 0.8em;
+}
+
+footer a {
+    color: var(--accent-primary);
+}
+
+/* Theme toggle button styles */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: var(--button-bg);
+    color: var(--text-primary);
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+    z-index: 1000;
+    transition: background-color 0.3s ease;
+}
+
+.theme-toggle:hover {
+    background-color: var(--button-hover);
+}
+
+/* Smooth theme transition */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
