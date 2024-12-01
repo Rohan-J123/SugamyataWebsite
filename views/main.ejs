@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en"> 
+<head>
+    <link rel='stylesheet' type='text/css' href='./css_files/main_css.css'>
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugamyata Project - Accessibility Awareness</title>
+    <style>
+        /* Add these styles to handle link appearance */
+        a {
+            text-decoration: none;  /* Removes underline */
+            color: inherit;  /* Uses parent text color */
+            transition: color 0.3s ease;  /* Smooth color transition */
+        }
+
+        /* Style for links in the overview section */
+        #overview a, .content-box a {
+            color: #67c7dd;  /* Default link color - using the project's blue */
+        }
+
+        /* Hover state */
+        #overview a:hover, .content-box a:hover {
+            color: #1e90ff;  /* Lighter blue on hover */
+        }
+
+        .nav-menu a, footer a {
+        color: var(--text-primary) !important;
+    }
+
+        /* Exception for footer links*/
+        footer a {
+            color: inherit;
+        }
+
+        /* Exception for navigation menu links */
+        .nav-menu a {
+            color: inherit;
+        }
+    </style>
+</head>
+<button class="theme-toggle" onclick="toggleTheme()">🌙</button>
+<body>
+    <div class="hamburger-menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#overview">Background</a></li>
+                <li><a href="#project-overview">Project Overview</a></li>
+                <li><a href="#impact">Project Impact</a></li>
+                <li><a href="#involved">Get Involved</a></li>
+            </ul>
+        </nav>
+    </div>
+    
+    <div class="container">
+        <header id="home">
+            <h1>Sugamyata Project <br> Accessibility Awareness</h1>
+        </header>
+        <main>
+            <!-- <a href="" target="_blank"></a> -->
+            <section id="overview" class="overview">
+                <h2 class="overview-special">Background</h2>
+                <p>The <a href="https://www.who.int/publications/i/item/WHO-NMH-VIP-11.01" target="_blank">World Health 
+                    Organization</a> estimates that more than a billion people live with some form of disability. The 
+                    <a href="https://www.un.org/disabilities/documents/convention/convoptprot-e.pdf" target="_blank">United 
+                    Nations Convention on the Rights of Persons with Disabilities (CRPD)</a> mandates countries to “… promote 
+                    the design, development, production, and distribution of accessible information and communications 
+                    technologies and systems…”. To accomplish this, concepts and skills needed to develop accessible 
+                    products and services must be included in computing education. Software companies like 
+                    <a href="https://www.google.com/accessibility/for-developers/" target="_blank">Google</a>, 
+                    <a href="https://engineering.fb.com/2020/07/30/web/facebook-com-accessibility/" target="_blank">Facebook</a>, 
+                    <a href="https://developer.apple.com/design/human-interface-guidelines/accessibility" target="_blank">Apple</a>, 
+                    and <a href="https://inclusive.microsoft.design/" target="_blank">Microsoft</a> emphasize making their 
+                    products accessible, and accessibility often features as a preferred skill in their job postings.</p>
+
+                <h2 id="project-overview" class="overview-special">Project Overview</h2>
+                <p>The Sugamyata Project aims to raise awareness about accessibility in technology through 
+                    interactive and educational games. Our mission is to create a more inclusive digital 
+                    world by educating developers and users about the importance of accessible design.</p>
+                <p>Despite such increasing awareness in the software industry about accessibility in the 
+                    recent years, <a href="https://dl.acm.org/doi/10.1145/3348797" target="_blank">many mainstream software 
+                    products fall short of meeting accessibility criteria</a>. Software professionals point to 
+                    <a href="https://dl.acm.org/doi/10.1145/3334480.3383103" target="_blank"> a lack of relevant knowledge and 
+                    skills in computing education</a> for this gap in implementing accessibility.</p>
+                <p>According to the <a href="https://dl.acm.org/doi/10.1145/3159450.3159484" target="_blank">computing (CS) 
+                    faculty</a>, the main barriers to teaching accessibility include the lack of clear learning objectives about 
+                    accessibility and their lack of knowledge about accessibility. Also, most instructors who teach accessibility 
+                    have a background in human-computer interaction (HCI) and related fields and teach these topics in 
+                    specialized courses. This indicates that other instructors may find it challenging to build their expertise 
+                    and to incorporate accessibility topics in 'mainstream' CS courses.</p>
+            </section>
+            <div id="impact" class="content-box">
+                <h2>Project Impact</h2>
+                <p>The Sugamyata Project addresses the critical need for accessibility education in the tech industry. By providing interactive learning experiences, we aim to:</p>
+                <ul>
+                    <li>Increase awareness of accessibility issues</li>
+                    <li>Improve the skills of developers in creating accessible products</li>
+                    <li>Foster a more inclusive digital environment for all users</li>
+                </ul>
+            </div>
+            <div class="button-container">
+                <a href="/buckets" class="button">Educational Games</a>
+                <a href="/contributers_courses" class="button">Contributors & Courses</a>
+            </div>
+            <div id="involved" class="content-box">
+                <h2>Get Involved</h2>
+                <p>Join our mission to make technology accessible for everyone. We welcome contributions from individuals and organizations who share our vision of an inclusive digital world.</p>
+                <p>Here's how you can participate:</p>
+                <ul>
+                    <li>Spread awareness about digital accessibility in your network</li>
+                    <li>Partner with us for accessibility training in your organization</li>
+                </ul>
+                <p><a href="https://swaroopjoshi.in/" style="color: #03256C; font-weight: bold;">Contact us</a> to learn more about collaboration opportunities and how you can make a difference.</p>
+            </div>
+        </main>
+        <footer>
+            <p>&copy; 2024 Sugamyata Project. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+        </footer>
+    </div>
+    <script>
+        // Check for saved theme preference or default to dark theme
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+    
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    
+        function updateThemeIcon(theme) {
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+    </script>
+</body>
+</html>

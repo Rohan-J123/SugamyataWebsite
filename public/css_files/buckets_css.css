@@ -8,6 +8,8 @@
     unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
 }
 
+
+
 :root {
     /* Dark mode colors (default) */
     --bg-primary: #2c3e50;
@@ -17,7 +19,7 @@
     --text-primary: #ffffff;
     --text-secondary: #ecf0f1;
     --text-dark: #333;
-    --accent-primary: #2541B2;
+    --accent-primary: white; /*#2541B2;*/
     --accent-secondary: #3498db;
     --button-bg: #3498db;
     --button-hover: #2980b9;
@@ -49,6 +51,7 @@
     --input-bg: #ffffff;
     --input-border: #ddd;
 }
+
 
 body {
     font-family: 'Roboto', sans-serif;
@@ -142,22 +145,18 @@ header {
     transition: background-color 0.3s ease;
 }
 
+/*
+.center {
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+  }
+*/
+
 .play-button:hover {
-    background-color: var(--button-hover);
-}
-
-.back-to-home-button {
-    display: inline-block;
-    background-color: var(--button-bg);
-    color: var(--text-primary);
-    padding: 5px 10px;
-    border-radius: 3px;
-    text-decoration: none;
-    margin-top: 5px;
-    transition: background-color 0.3s ease;
-}
-
-.back-to-home-button:hover {
     background-color: var(--button-hover);
 }
 
@@ -167,37 +166,50 @@ header {
 }
 
 footer {
+    width: 100%;
     background-color: var(--bg-primary);
     color: var(--text-primary);
-    bottom: 0;
     text-align: center;
-    padding: 0;
-    margin-top: 2rem;
+    padding: 20px 0;
+    margin-top: 40px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+    position: relative;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.6;
 }
 
 footer a {
-    color: var(--accent-secondary);
+    color: var(--text-primary);
     text-decoration: none;
+    transition: color 0.3s ease;
 }
 
 footer a:hover {
+    color: var(--accent-primary);
     text-decoration: underline;
 }
 
 /* Sign-in/register form styles */
-.sign-in-register-container, .sign-up-register-container {
+.sign-in-register-container {
     display: flex;
     justify-content: center;
     align-items: center;
     position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: var(--overlay-bg);
     z-index: 1000;
 }
 
-.sign-in-register-form, .sign-up-register-form{
+.sign-in-register-form {
+    position: relative;
     background-color: var(--form-bg);
     border-radius: 8px;
     box-shadow: 0 4px 6px var(--shadow-color);
@@ -206,7 +218,7 @@ footer a:hover {
     max-width: 400px;
 }
 
-.sign-in-register-form h2, .sign-up-register-form h2 {
+.sign-in-register-form h2 {
     color: var(--accent-primary);
     border-bottom: 2px solid var(--accent-secondary);
     padding-bottom: 10px;
@@ -214,7 +226,7 @@ footer a:hover {
     text-align: center;
 }
 
-.sign-in-register-form input, .sign-up-register-form input {
+.sign-in-register-form input {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
@@ -225,7 +237,7 @@ footer a:hover {
     color: var(--text-secondary);
 }
 
-.sign-in-register-form button, .sign-up-register-form button {
+.sign-in-register-form button {
     width: 100%;
     padding: 10px;
     background-color: var(--button-bg);
@@ -236,8 +248,31 @@ footer a:hover {
     transition: background-color 0.3s ease;
 }
 
-.sign-in-register-form button:hover, .sign-up-register-form button:hover {
+.sign-in-register-form button:hover {
     background-color: var(--button-hover);
+}
+
+.sign-in-register-form .close-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    color: #888;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+    width: auto;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+
+.sign-in-register-form .close-button:hover {
+    color: #333;
 }
 
 .toggle-form {
@@ -253,6 +288,10 @@ footer a:hover {
 
 .toggle-form span:hover {
     text-decoration: underline;
+}
+
+#email-field {
+    display: none;
 }
 
 .hidden {
@@ -283,216 +322,72 @@ footer a:hover {
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-
-.spinner-grow,
-.spinner-border {
-  display: inline-block;
-  width: var(--bs-spinner-width);
-  height: var(--bs-spinner-height);
-  vertical-align: var(--bs-spinner-vertical-align);
-  border-radius: 50%;
-  animation: var(--bs-spinner-animation-speed) linear infinite var(--bs-spinner-animation-name);
+/* Contributors Section Styles */
+.contributor {
+    background-color: var(--bg-game);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: start;
+    gap: 20px;
 }
 
-@keyframes spinner-border {
-  to {
-    transform: rotate(360deg) /* rtl:ignore */;
-  }
-}
-.spinner-border {
-  --bs-spinner-width: 2rem;
-  --bs-spinner-height: 2rem;
-  --bs-spinner-vertical-align: -0.125em;
-  --bs-spinner-border-width: 0.25em;
-  --bs-spinner-animation-speed: 0.75s;
-  --bs-spinner-animation-name: spinner-border;
-  border: var(--bs-spinner-border-width) solid currentcolor;
-  border-right-color: transparent;
+.contributor-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
 }
 
-.spinner-border-sm {
-  --bs-spinner-width: 1rem;
-  --bs-spinner-height: 1rem;
-  --bs-spinner-border-width: 0.2em;
+.contributor-info {
+    flex: 1;
 }
 
-@keyframes spinner-grow {
-  0% {
-    transform: scale(0);
-  }
-  50% {
-    opacity: 1;
-    transform: none;
-  }
-}
-.spinner-grow {
-  --bs-spinner-width: 2rem;
-  --bs-spinner-height: 2rem;
-  --bs-spinner-vertical-align: -0.125em;
-  --bs-spinner-animation-speed: 0.75s;
-  --bs-spinner-animation-name: spinner-grow;
-  background-color: currentcolor;
-  opacity: 0;
+.contributor-role {
+    color: var(--accent-secondary);
+    margin: 5px 0;
 }
 
-.spinner-grow-sm {
-  --bs-spinner-width: 1rem;
-  --bs-spinner-height: 1rem;
+.social-links {
+    margin-top: 10px;
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .spinner-border,
-  .spinner-grow {
-    --bs-spinner-animation-speed: 1.5s;
-  }
+.social-links a {
+    color: var(--text-secondary);
+    margin-right: 15px;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Days+One&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Protest+Guerrilla&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Wallpoet&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-
-.days-one-regular {
-    font-family: "Days One", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-  
-.protest-guerrilla-regular {
-    font-family: "Protest Guerrilla", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-  
-.wallpoet-regular {
-    font-family: "Wallpoet", sans-serif;
-    font-weight: 400;
-    font-style: normal;
-}
-  
-.lobster-regular {
-    font-family: "Lobster", sans-serif;
-    font-weight: 400;
-    font-style: normal;
+.social-links a:hover {
+    color: var(--accent-secondary);
 }
 
-.cursive-regular {
-    font-family: cursive;
-    font-weight: 400;
-    font-style: italic;
+/* Education Section Styles */
+.education-section {
+    background-color: var(--bg-game);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
 }
 
-/*
-        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
-        @font-face {
-            font-family: 'IBM Plex Mono';
-            font-style: normal;
-            font-weight: 400;
-            font-display: swap;
-            src: url(https://fonts.gstatic.com/s/ibmplexmono/v19/-F63fjptAgt5VM-kVkqdyU8n1iIq129k.woff2) format('woff2');
-            unicode-range: U+0460-052F, U+1C80-1C8A, U+20B4, U+2DE0-2DFF, U+A640-A69F, U+FE2E-FE2F;
-        }
-        body {
-            font-family: 'Roboto', sans-serif;
-            line-height: 1.6;
-            font-size: 20px;
-            color: #333;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'IBM Plex Mono', monospace;
-            color: #2541B2;
-        }   
-        h1 { font-size: 2.5em; color: #ffffff; }
-        h2 { font-size: 2.2em; color: #ffffff; }
-        h3 { font-size: 1.9em; }
-        .container {
-            max-width: 100%;
-            margin: 0 auto;
-        }
-        header {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            text-align: center;
-            padding: 1rem 0;
-        }
-        h1, h2 {
-            margin: 0;
-        }
-        .buckets-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-        }
-        .bucket {
-            flex: 1;
-            background-color: #fff;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            margin-left: 15px;
-            margin-right: 15px;
-            margin-bottom: -10px;
-            padding: 20px;
-            transition: transform 0.3s ease;
-        }
-        .bucket:hover {
-            transform: translateY(-5px);
-        }
-        .bucket h3 {
-            color: #2541B2;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 10px;
-        }
-        .bucket-content {
-            margin-top: 15px;
-        }
-        .game {
-            background-color: #f9f9f9;
-            border-radius: 5px;
-            padding: 10px;
-            margin-bottom: 10px;
-        }
-        .game h4 {
-            margin: 0 0 5px 0;
-            color: #2980b9;
-        }
-        .game p {
-            margin: 0;
-            font-size: 0.9em;
-        }
-        .play-button {
-            display: inline-block;
-            background-color: #3498db;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 3px;
-            text-decoration: none;
-            margin-top: 5px;
-            transition: background-color 0.3s ease;
-        }
-        .play-button:hover {
-            background-color: #2980b9;
-        }
-        .button-container {
-            text-align: right;
-            margin: 40px 0;
-        }
-        footer {
-            background-color: #2c3e50;
-            color: #ecf0f1;
-            bottom: 0;
-            text-align: center;
-            padding: 0;
-            margin-top: 2rem;
-        }
-        footer a {
-            color: #3498db;
-            text-decoration: none;
-        }
-        footer a:hover {
-            text-decoration: underline;
-        }
-        /* New styles for sign-in/register form */
-/*
+.course {
+    margin: 15px 0;
+}
+
+.course h5 {
+    color: var(--accent-secondary);
+    margin: 10px 0;
+}
+
+.implementation-points {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.implementation-points li {
+    margin: 5px 0;
+}

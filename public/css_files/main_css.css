@@ -1,4 +1,3 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
 @font-face {
     font-family: 'IBM Plex Mono';
@@ -18,6 +17,7 @@
     --text-content: #f0f0f0;    /* New variable for content text */
     --accent-primary: #2541B2;
     --accent-secondary: #03256C;
+    --acent-tertiary: white;
     --hover-color: #06BEE1;
     --button-bg: #2541B2;
     --button-hover: #03256C;
@@ -51,6 +51,10 @@ body {
 h1, h2, h3, h4, h5, h6 {
     font-family: 'IBM Plex Mono', monospace;
     color: var(--accent-primary);
+}
+
+.overview-special {
+    color: var(--accent-tertiary);
 }
 
 h1 { font-size: 2.5em; }
@@ -228,16 +232,32 @@ main {
 }
 
 footer {
+    width: 100%;
     background-color: var(--bg-primary);
     color: var(--text-primary);
     text-align: center;
-    padding: 10px 0;
-    margin-top: 50px;
-    font-size: 0.8em;
+    padding: 20px 0;
+    margin-top: 40px;
+    box-shadow: 0 -2px 10px rgba(0,0,0,0.1);
+    font-size: 0.9em;
+    position: relative;
+    bottom: 0;
+}
+
+footer p {
+    margin: 0;
+    line-height: 1.6;
 }
 
 footer a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
     color: var(--accent-primary);
+    text-decoration: underline;
 }
 
 /* Theme toggle button styles */
@@ -252,7 +272,7 @@ footer a {
     border-radius: 5px;
     cursor: pointer;
     z-index: 1000;
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
 }
 
 .theme-toggle:hover {
@@ -261,5 +281,5 @@ footer a {
 
 /* Smooth theme transition */
 * {
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.1s ease, color 0.1s ease;
 }

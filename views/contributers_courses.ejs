@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel='stylesheet' type='text/css' href='./css_files/buckets_css.css'>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Accessibility Education</title>
+    <style>
+    /* Add these styles to handle link appearance */
+    a {
+        text-decoration: none;  /* Removes underline */
+        color: inherit;  /* Uses parent text color */
+        transition: color 0.3s ease;  /* Smooth color transition */
+    }
+
+    .bucket-content a {
+        color: #67c7dd !important;  /* Default link color - using the project's blue */
+    }
+
+    .bucket-content a:hover {
+        color: #1e90ff !important;  /* Lighter blue on hover */
+    }
+
+    /* Exception for nav menu and footer */
+    .nav-menu a, footer a {
+        color: var(--text-primary) !important;
+    }
+        .buckets-container {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            align-items: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .bucket {
+            width: 100%;
+            min-width: 300px;
+            max-width: 800px;
+        }
+
+        /* Updated Hamburger Menu Styles */
+        .hamburger-menu {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1000;
+            cursor: pointer;
+        }
+
+        .hamburger-icon {
+            width: 35px;
+            height: 35px;
+            background-color: var(--bg-primary);
+            border-radius: 5px;
+            padding: 5px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-around;
+            align-items: center;
+        }
+
+        .hamburger-icon span {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text-primary);
+            display: block;
+            border-radius: 2px;
+        }
+
+        .nav-menu {
+            position: fixed;
+            top: 70px;
+            left: -250px;
+            width: 200px;
+            background-color: var(--bg-primary);
+            padding: 20px;
+            border-radius: 0 10px 10px 0;
+            transition: left 0.3s ease;
+            z-index: 999;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+        }
+
+        .hamburger-menu:hover .nav-menu {
+            left: 0;
+        }
+
+        .nav-menu ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .nav-menu li {
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.1);
+        }
+
+        .nav-menu li:last-child {
+            border-bottom: none;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 1.1em;
+            display: block;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--hover-color);
+        }
+    </style>
+</head>
+<button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+<body>
+    <!-- Updated Hamburger Menu -->
+    <div class="hamburger-menu">
+        <div class="hamburger-icon">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        <nav class="nav-menu">
+            <ul>
+                <li><a href="#accessibility-courses">Accessibility in CS Courses</a></li>
+                <li><a href="#publications">Our Publications</a></li>
+                <li><a href="#contributors">Our Contributors</a></li>
+            </ul>
+        </nav>
+    </div>
+
+    <header>
+        <h1>Sugamyata Project</h1>
+        <h2>Digital Accessibility Education</h2>
+    </header>
+    
+    <div class="container">
+        <div class="buckets-container">
+            <div class="bucket" id="accessibility-courses">
+                <h3>Accessibility in CS Courses</h3>
+                <div class="bucket-content">
+                    <div class="education-section">
+                        <p>We aim to bridge this gap by developing relevant course material, resources, 
+                            and assignments that other instructors can easily integrate in their courses 
+                            without much prior knowledge about accesibility and without diluting the 
+                            "core" learning objectives.
+                            Our <a href="https://swaroopjoshi.in/courses/mobile-app-dev/" target="_blank">Software Development for Portable Devices</a> at BITS Pilani, Goa, 
+                            incorporates introduces accessibility principles early on in the semester and 
+                            assesses students on their accessibility knowledge through multiple assignments. 
+                            Our findings indicate that students gained in accessibility awareness, technical 
+                            knowledge, and empathy after taking this course. All lectures notes, assignments, 
+                            and resources are publicly available.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="bucket" id="publications">
+                <h3>Our Publications</h3>
+                <div class="bucket-content">
+                    <div class="publication">
+                        <ul class="publications-list">
+                            <li>
+                                <div class="publication-entry">
+                                    Parthasarathy PD, Swaroop Joshi (2024). <a href="https://swaroopjoshi.in/publication/pd-teaching-digital-accessibility-2024/">Teaching Digital Accessibility in Computing Education: Views of Educators in India</a>. Proceedings of the 2024 ACM Conference on International Computing Education Research.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="publication-entry">
+                                    P D Parthasarathy, Swaroop Joshi (2024). <a href="https://swaroopjoshi.in/publication/parthasarathy-exploring-need-accessibility-2024/">Exploring the Need of Accessibility Education in the Software Industry</a>. IEEE Access.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="publication-entry">
+                                    P D Parthasarathy, Swaroop Joshi (2024). <a href="https://swaroopjoshi.in/publication/parthasarathy-teaching-digital-accessibility-2024/">Teaching Digital Accessibility to Industry Professionals using the Community of Practice Framework</a>. Proceedings of the 2024 ACM Technical Symposium on Computer Science Education.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="publication-entry">
+                                    P.D. Parthasarathy, Swaroop Joshi (2023). <a href="https://swaroopjoshi.in/publication/parthasarathy-serious-games-enhancing-2023/">Serious Games for Enhancing Accessibility Awareness and Skills</a>. IEEE Transactions on Education.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="publication-entry">
+                                    Jaskaran Singh Bhatia, Parthasarathy P D, Snigdha Tiwari, Dhruv Nagpal, Swaroop Joshi (2023). <a href="https://swaroopjoshi.in/publication/bhatia-integrating-accessibility-mobile-2023/">Integrating Accessibility in a Mobile App Development Course</a>. Proceedings of the 54th ACM Technical Symposium on Computer Science Education.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="publication-entry">
+                                    Dhruv Nagpal, Jaskaran Singh Bhatia, Dev Goel, Parthasarathy PD, Snigdha Tiwari, Swaroop Joshi (2022). <a href="https://swaroopjoshi.in/publication/nagpal-inclusive-thinking-questionnaire-2022/">Inclusive Thinking Questionnaire: Preliminary Results</a>. Proceedings of the 53rd ACM Technical Symposium on Computer Science Education.
+                                </div>
+                            </li>
+                            <li>
+                                <div class="publication-entry">
+                                    Swaroop Joshi (2021). <a href="https://swaroopjoshi.in/publication/joshi-teaching-accessibility-india-2021/">Teaching Accessibility in India: A Work in Progress</a>. SIGCSE Technical Symposium on Computer Science Education.
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bucket" id="contributors">
+                <h3>Our Contributors</h3>
+                <div class="contributors-grid">
+                    <div class="contributor-item">
+                        <a href="https://swaroopjoshi.in/" target="_blank">Swaroop Joshi (PI)</a>
+                    </div>
+                    <div class="contributor-item">
+                        <a href="https://parthasarathypd.com/" target="_blank">P D Parthasarathy (PhD)</a>
+                    </div>
+                    <div class="contributor-item">
+                        <a href="https://www.linkedin.com/in/sravani-bobba-6a793625a/" target="_blank">Sravani Bobba</a>
+                    </div>
+                    <div class="contributor-item">
+                        Rohan Jha
+                    </div>
+                    <div class="contributor-item">
+                        Agastya Sen
+                    </div>
+                    <div class="contributor-item">
+                        Aniket Patel
+                    </div>
+                    <div class="contributor-item">
+                        Dev Goel
+                    </div>
+                    <div class="contributor-item">
+                        Dhruv Nagpal
+                    </div>
+                    <div class="contributor-item">
+                        Dhruv Patel
+                    </div>
+                    <div class="contributor-item">
+                        Garvit Jain
+                    </div>
+                    <div class="contributor-item">
+                        Gurbaaz Singh Gill
+                    </div>
+                    <div class="contributor-item">
+                        Jaskaran Singh Bhatia
+                    </div>
+                    <div class="contributor-item">
+                        Kshitij Gaur
+                    </div>
+                    <div class="contributor-item">
+                        Priyashi Chaudhary
+                    </div>
+                    <div class="contributor-item">
+                        Raghav Mangalapalli
+                    </div>
+                    <div class="contributor-item">
+                        Shobhit Gangwal
+                    </div>
+                    <div class="contributor-item">
+                        Shruti Varghese
+                    </div>
+                    <div class="contributor-item">
+                        Snigdha Tiwari
+                    </div>
+                </div>
+            </div>
+
+            <!--
+            <div class="bucket" id="contributors">
+                <h3>Our Contributors</h3>
+                <div class="bucket-content">
+                    <div class="contributor">
+                            <p><a href="https://swaroopjoshi.in/" target="_blank">Swaroop Joshi</a></p>
+                            <p><a href="https://parthasarathypd.com/" target="_blank">P D Parthasarathy</a></p>
+                            <p><a href="https://www.linkedin.com/in/sravani-bobba-6a793625a/" target="_blank">Sravani Bobba</a></p>
+                            <p>Rohan J</p>
+                    </div>
+                </div> 
+            </div>
+        
+            <div class="bucket" id="resources">
+                <h3>Other Resources</h3>
+                <div class="bucket-content">
+                    <div class="resources-section">
+                        <h4>Educational Materials</h4>
+                        <ul class="resources-list">
+                            <li>
+                                <h5>Lecture Slides</h5>
+                                <p>Comprehensive slide decks covering accessibility topics</p>
+                                <a href="#" class="resource-link">Download Slides</a>
+                            </li>
+                            <li>
+                                <h5>Workshop Materials</h5>
+                                <p>Hands-on exercises and practical guides</p>
+                                <a href="#" class="resource-link">Access Materials</a>
+                            </li>
+                            <li>
+                                <h5>Reference Guides</h5>
+                                <p>Quick reference materials and checklists</p>
+                                <a href="#" class="resource-link">View Guides</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        -->
+        </div>
+    </div>
+
+    <div class="button-container">
+        <a href="/main" class="play-button">Back to Home Page</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Sugamyata Project. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+    <script>
+        // Theme toggle functionality
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+    
+        function toggleTheme() {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        }
+    
+        function updateThemeIcon(theme) {
+            const button = document.querySelector('.theme-toggle');
+            button.textContent = theme === 'dark' ? '🌙' : '☀️';
+        }
+    </script>
+</body>
+</html>

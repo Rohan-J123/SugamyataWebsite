@@ -1,19 +1,9 @@
-const authForm = document.getElementById('auth-form');
-const authEmailField = document.getElementById('auth-email');
-const authPasswordField = document.getElementById('auth-password');
-const authSubmitBtn = document.getElementById('auth-submit-btn');
+const regForm = document.getElementById('auth-form');
+const regEmailField = document.getElementById('email-field');
+const regPasswordField = document.getElementById('password');
+const regPasswordConfirmField = document.getElementById('password-confirm');
+const regSubmitBtn = document.getElementById('submit-btn');
 
-const regForm = document.getElementById('reg-form');
-const regEmailField = document.getElementById('reg-email');
-const regPasswordField = document.getElementById('reg-password');
-const regPasswordConfirmField = document.getElementById('reg-password-confirm');
-const regSubmitBtn = document.getElementById('reg-submit-btn');
-
-const playButtons = document.querySelectorAll('.play-button');
-const toggleLinks = document.querySelectorAll('.toggle-link');
-
-let isSignIn = true;
-let currentGame = null;
 
 document.getElementById('login-field').addEventListener('change', function() {
     var selectedValue = '';
@@ -36,111 +26,94 @@ document.getElementById('login-field').addEventListener('change', function() {
 
 playButtons.forEach(button => {
     button.addEventListener('click', (e) => {
-        e.preventDefault();
-        if (!sessionStorage.getItem('userID')) {
-            currentGame = e.target;
-            document.getElementById('sign-in-register-container').style.display = 'block';
-        } else {
-            switch(e.target.closest('.game').querySelector('h4').textContent){
-                case 'A11Y Bug Hunter': onBugHunterGame(); break;
-                default: console.log("hey"); break;
+        if (!e.target.classList.contains('back-to-home')) {
+            e.preventDefault();
+            if (!sessionStorage.getItem('userID')) {
+                currentGame = e.target;
+                document.getElementById('sign-in-register-container').classList.remove('hidden');
+            } else {
+                switch(e.target.closest('.game').querySelector('h4').textContent){
+                    case 'A11Y Bug-hunter': onBugHunterGame(); break;
+                    case '2D WCAG Quest': OnAccessQuestGame(); break;
+                    case 'A11Y Wordle': OnAccessibilityWordleGame(); break;
+                    default: console.log("hey"); break;
+                }
             }
         }
     });
 });
 
-function onToggleLink(){
-    isSignIn = !isSignIn;
-    if (isSignIn) {
-        document.getElementById('sign-in-register-container').style.display = 'block';
-        document.getElementById('sign-up-register-container').style.display = 'none';
-    } else {
-        document.getElementById('sign-in-register-container').style.display = 'none';
-        document.getElementById('sign-up-register-container').style.display = 'block';
-    }
-}
-
 regForm.addEventListener('submit', async (e) => {
     e.preventDefault();
-    document.getElementById('spinner-circle').style.display = 'block';
-    
-    const password = regPasswordField.value;
-    const passwordConfirm = regPasswordConfirmField.value;
-    const email = regEmailField.value;
+    if(isSignIn == false){
+        const password = regPasswordField.value;
+        const passwordConfirm = regPasswordConfirmField.value;
+        const email = regEmailField.value;
 
-    if (password !== passwordConfirm) {
-        alert("The entered passwords aren't the same.");
-        document.getElementById('spinner-circle').style.display = 'none';
-        return;
-    }
-
-    try {
-        const response = await fetch('/signUp', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
-
-        const data = await response.json();
-        document.getElementById('spinner-circle').style.display = 'none';
-
-        if (response.ok) {
-            sessionStorage.setItem('userID', data.user['uid']);
-            console.log("User signed up:", data.user);
-            document.getElementById('sign-in-register-container').style.display = 'none';
-            document.getElementById('sign-up-register-container').style.display = 'none';
-            document.getElementById('login-open').click();
-        } else {
-            console.error("Error signing up:", data);
-            alert(data.error);
+        if (password !== passwordConfirm) {
+            alert("The entered passwords aren't the same.");
+            return;
         }
-    } catch (error) {
-        console.error('Error signing up:', error);
-        alert('Error signing up, please try again later.');
+
+        try {
+            const response = await fetch('/signUp', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                sessionStorage.setItem('userID', data.user['uid']);
+                console.log("User signed up:", data.user);
+                document.getElementById('sign-in-register-container').classList.add('hidden');
+                document.getElementById('additional-register-container').classList.remove('hidden');
+                alert("User signed up sccessfully!");
+            } else {
+                console.error("Error signing up:", data);
+                alert(data.error);
+            }
+        } catch (error) {
+            console.error('Error signing up:', error);
+            alert('Error signing up, please try again later.');
+        }
+    } else {
+        const password = regPasswordField.value;
+        const email = regEmailField.value;
+
+        try {
+            const response = await fetch('/signIn', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ email, password }),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                sessionStorage.setItem('userID', data.user['uid']);
+                console.log("User signed in:", data.user);
+                alert("User signed in sccessfully!");
+                document.getElementById('sign-in-register-container').classList.add('hidden');
+            } else {
+                console.error("Error signing in:", data.message);
+                alert(data.error);
+            }
+        } catch (error) {
+            console.error("Network error:", error);
+            alert("Network error, please try again later.");
+        }
     }
 });
 
-
-authForm.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    document.getElementById('spinner-circle').style.display = 'block';
-    
-    const password = authPasswordField.value;
-    const email = authEmailField.value;
-
-    try {
-        const response = await fetch('/signIn', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ email, password }),
-        });
-
-        const data = await response.json();
-        document.getElementById('spinner-circle').style.display = 'none';
-
-        if (response.ok) {
-            sessionStorage.setItem('userID', data.user['uid']);
-            console.log("User signed in:", data.user);
-            document.getElementById('sign-in-register-container').style.display = 'none';
-            document.getElementById('sign-up-register-container').style.display = 'none';
-        } else {
-            console.error("Error signing in:", data.message);
-            alert(data.error);
-        }
-    } catch (error) {
-        console.error("Network error:", error);
-        alert("Network error, please try again later.");
-    }
-});
 
 document.getElementById("login-info").addEventListener("submit", function(event) {
-    document.getElementById('spinner-circle').style.display = 'block';
     event.preventDefault();
-    document.getElementById('spinner-circle').style.display = 'block';
     const name = document.getElementById("login-name").value;
     const field = document.getElementById("login-field").value;
     const accessibilityKnowledge = document.getElementById("login-accessibilty-knowledge").value;
@@ -175,15 +148,13 @@ document.getElementById("login-info").addEventListener("submit", function(event)
     .then(data => {
         if (data && data.id) {
             sessionStorage.setItem("user-name", name);
-            document.getElementById('spinner-circle').style.display = 'none';
-            document.getElementById('login-close').click();
+            document.getElementById('additional-register-container').classList.add('hidden');
         } else {
             console.error("Failed to add document data");
         }
     })
     .catch(error => {
         console.error("Error adding data:", error);
-        document.getElementById('spinner-circle').style.display = 'none';
     });
 });
 

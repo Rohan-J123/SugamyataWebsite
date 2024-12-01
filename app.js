@@ -16,8 +16,7 @@ admin.initializeApp({
 
 const db = admin.firestore();
 
-const firebaseConfig = {
-};
+const firebaseConfig = {};
 
 const firebaseApp = initializeApp(firebaseConfig);
 const auth = getAuth(firebaseApp);
@@ -29,15 +28,19 @@ app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
 app.get('/', (req, res) => {
-    res.render('project_overview', { title: 'Home', message: 'Welcome to the Home Page!' });
+    res.render('main', { title: 'Home', message: 'Welcome to the Home Page!' });
 });
 
 app.get('/buckets', (req, res) => {
     res.render('buckets');
 });
 
-app.get('/project_overview', (req, res) => {
-    res.render('project_overview');
+app.get('/contributers_courses', (req, res) => {
+    res.render('contributers_courses');
+});
+
+app.get('/main', (req, res) => {
+    res.render('main');
 });
 
 app.post('/signUp', (req, res) => {

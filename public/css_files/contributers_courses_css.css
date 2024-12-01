@@ -1,0 +1,104 @@
+/* Contributors Section Styles */
+.contributor {
+    background-color: var(--bg-game);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: start;
+    gap: 20px;
+}
+
+.contributor-image {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.contributor-info {
+    flex: 1;
+}
+
+.contributor-role {
+    color: var(--accent-secondary);
+    margin: 5px 0;
+}
+
+.social-links {
+    margin-top: 10px;
+}
+
+.social-links a {
+    color: var(--text-secondary);
+    margin-right: 15px;
+    font-size: 1.2em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-links a:hover {
+    color: var(--accent-secondary);
+}
+
+/* Education Section Styles */
+.education-section {
+    background-color: var(--bg-game);
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.course {
+    margin: 15px 0;
+}
+
+.course h5 {
+    color: var(--accent-secondary);
+    margin: 10px 0;
+}
+
+.implementation-points {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: var(--text-secondary);
+}
+
+.implementation-points li {
+    margin: 5px 0;
+}
+
+.contributors-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.contributor-item {
+    background-color: var(--bg-game);
+    border-radius: 8px;
+    padding: 15px;
+    text-align: center;
+}
+
+.contributor-item a {
+    color: #67c7dd !important;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.contributor-item a:hover {
+    color: #1e90ff !important;
+}
+
+footer a {
+    color: var(--text-primary);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+footer a:hover {
+    color: var(--accent-primary);
+    text-decoration: none;
+}
